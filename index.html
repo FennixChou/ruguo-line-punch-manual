@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LINE 打卡使用手冊</title>
+<style>
+:root{
+  --bg:#F2ECDF;--surface:#FCFAF4;--surface-2:#F7F1E6;--ink:#22271F;--muted:#62665A;--line:#E4DCCB;
+  --primary:#34573B;--primary-strong:#274430;--primary-soft:rgba(52,87,59,.10);--primary-line:rgba(52,87,59,.30);
+  --clay:#8F6234;--warn:#96611B;--danger:#AF4636;
+}
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#d9d3c6;color:var(--ink);font-family:"Segoe UI","Microsoft JhengHei","PingFang TC","Noto Sans TC",system-ui,sans-serif;
+  font-size:15.5px;line-height:1.7;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;margin:10mm auto;background:var(--bg);padding:16mm 16mm 14mm;position:relative;overflow:hidden;
+  page-break-after:always;break-after:page;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.page:last-child{page-break-after:auto;break-after:auto}
+@media print{body{background:var(--bg)}.page{margin:0;box-shadow:none}}
+.foot{position:absolute;left:16mm;right:16mm;bottom:8mm;display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:4px}
+h1{font-size:30px;margin:0 0 6px;font-weight:700;letter-spacing:.02em}
+h2{font-size:25px;margin:0 0 4px;color:var(--primary);font-weight:700}
+h2 .no{display:inline-block;background:var(--primary);color:#fff;border-radius:8px;padding:0 12px;margin-right:10px;font-size:21px}
+.lead{color:var(--muted);font-size:15px;margin:0 0 12px}
+.step{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 16px;margin:0 0 11px}
+.num{flex:0 0 40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:21px;display:flex;align-items:center;justify-content:center}
+.step .txt{flex:1;min-width:0}
+.step .txt b.t{display:block;font-size:18.5px;margin-bottom:2px}
+.step .txt p{margin:0 0 4px}
+.shot{flex:0 0 auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.shot img{display:block;width:100%;height:auto}
+.w58{width:58mm}.w62{width:62mm}.w66{width:66mm}.w68{width:68mm}.w70{width:70mm}.w72{width:72mm}.w80{width:80mm}
+.duo{display:flex;gap:14px;justify-content:center;align-items:flex-start;margin:6px 0 10px}
+.duo figure{margin:0;text-align:center}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:5px}
+.tip{background:var(--primary-soft);border-left:5px solid var(--primary);border-radius:8px;padding:9px 14px;margin:8px 0 10px;font-size:15px}
+.warn{background:rgba(150,97,27,.10);border-left:5px solid var(--warn);border-radius:8px;padding:9px 14px;margin:8px 0 10px;font-size:15px}
+.path{display:inline;font-weight:700;color:var(--primary-strong)}
+.key{display:inline-block;background:var(--primary);color:#fff;border-radius:6px;padding:0 8px;font-weight:700;font-size:14.5px;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th{background:var(--surface-2);color:var(--muted);font-weight:600;text-align:left;padding:7px 12px;font-size:13.5px;letter-spacing:.04em}
+td{padding:8px 12px;border-top:1px solid var(--line);vertical-align:top}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
+.big{font-size:19px}
+/* cover */
+.cover{display:flex;flex-direction:column;justify-content:space-between;padding:26mm 20mm 18mm}
+.cover .brand{font-size:17px;color:var(--primary);letter-spacing:.2em;font-weight:600}
+.cover h1{font-size:44px;line-height:1.3;margin:14px 0 8px}
+.cover .sub{font-size:22px;color:var(--muted)}
+.cover .menu{border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.cover .menu img{display:block;width:100%}
+.cover .meta{display:flex;justify-content:space-between;font-size:15px;color:var(--muted);border-top:2px solid var(--primary);padding-top:10px}
+.who{display:flex;gap:10px;margin-top:18px}
+.who span{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 16px;font-size:16px}
+/* rules */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 14px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.rule .k{font-size:13.5px;color:var(--muted)}
+.rule .v{font-size:23px;font-weight:700;color:var(--primary);font-variant-numeric:tabular-nums;line-height:1.35}
+.rule .d{font-size:14.5px}
+.toc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 18px}
+.toc div{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:5px 0;font-size:16.5px}
+.toc div:last-child{border-bottom:none}
+.qa{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 14px;margin:0 0 8px}
+.qa .q{font-weight:700;font-size:16px}
+.qa .q::before{content:"問";display:inline-block;background:var(--primary);color:#fff;border-radius:6px;padding:0 7px;margin-right:8px;font-size:14px}
+.qa .a{font-size:15px;margin-top:2px}
+.qa .a::before{content:"答";display:inline-block;background:var(--clay);color:#fff;border-radius:6px;padding:0 7px;margin-right:8px;font-size:14px}
+.contact{background:var(--primary);color:#fff;border-radius:12px;padding:14px 20px;margin-top:10px}
+.contact h3{margin:0 0 4px;font-size:20px}
+.contact p{margin:0;font-size:15.5px}
+.fail{display:flex;gap:14px;align-items:flex-start;margin-bottom:10px}
+.fail .txt{flex:1}
+.fail .tag{display:inline-block;background:var(--danger);color:#fff;border-radius:6px;padding:0 9px;font-weight:700;font-size:14.5px;margin-bottom:4px}
+ul.s{margin:4px 0 0;padding-left:1.2em}
+ul.s li{margin:2px 0}
+</style>
+</head>
+<body>
+
+<!-- 1 封面 -->
+<section class="page cover">
+  <div>
+    <div class="brand">如菓室內裝修有限公司</div>
+    <h1>LINE 打卡<br>使用手冊（員工版）v1</h1>
+    <div class="sub">用手機 LINE 上下班打卡，一張圖一個步驟</div>
+    <div class="who"><span>適用：如菓員工</span></div>
+  </div>
+  <div class="menu"><img src="images/00_staff_menu.png" alt="LINE 聊天室下方的打卡選單：上班打卡、下班打卡、補登申請、我的紀錄"></div>
+  <div>
+    <p style="font-size:17px;margin:0 0 14px">打卡就在 LINE 官方帳號「<b>如菓室內設計</b>」聊天室下方的這 4 個大按鈕。</p>
+    <div class="meta"><span>如菓室內裝修有限公司｜LINE 打卡使用手冊（員工版）v1</span><span>2026-10-22</span></div>
+  </div>
+</section>
+
+<!-- 2 先記住 -->
+<section class="page">
+  <h2>先記住這 6 件事</h2>
+  <p class="lead">規則以系統設定為準；有疑問直接問老闆。</p>
+  <div class="rules">
+    <div class="rule"><div class="k">上班時間</div><div class="v">09:00</div><div class="d"><b>09:40（含）以前</b>打上班卡都不算遲到；09:41 起算遲到，遲到分鐘從 09:00 起算。</div></div>
+    <div class="rule"><div class="k">下班時間（彈性）</div><div class="v">上班卡 ＋ 9 小時</div><div class="d">含午休 60 分鐘。例：08:50 上班卡 → 17:50 後可打下班卡。沒有上班卡的那天，以 18:00 判定。</div></div>
+    <div class="rule"><div class="k">打卡範圍</div><div class="v">公司 200 公尺內</div><div class="d">公司：台中市烏日區大同九街 73 號。在外面（案場、會勘）請用「補登申請」。</div></div>
+    <div class="rule"><div class="k">定位要夠準</div><div class="v">誤差 100 公尺內</div><div class="d">手機定位誤差超過 100 公尺會打不進去，換個地方再按一次。</div></div>
+    <div class="rule"><div class="k">時間以誰為準</div><div class="v">系統伺服器</div><div class="d">不看手機上的時間，手機時間不準也不影響。</div></div>
+    <div class="rule"><div class="k">什麼時候定位</div><div class="v">只在按下那一刻</div><div class="d">打開頁面不會定位；按下「確認打卡」時才讀一次位置。</div></div>
+  </div>
+  <h3 style="font-size:19px;margin:6px 0 6px">目錄</h3>
+  <div class="toc">
+    <div><span>一、第一次使用（只做一次）</span><span>第 3–4 頁</span></div>
+    <div><span>二、上班打卡</span><span>第 5 頁</span></div>
+    <div><span>三、下班打卡</span><span>第 6 頁</span></div>
+    <div><span>四、打卡失敗怎麼辦</span><span>第 7–8 頁</span></div>
+    <div><span>五、補登申請（忘了打卡／在外面工作）</span><span>第 9 頁</span></div>
+    <div><span>六、我的紀錄</span><span>第 10 頁</span></div>
+    <div><span>常見問題 Q&amp;A ／ 聯絡老闆</span><span>第 11 頁</span></div>
+  </div>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>2</span></div>
+</section>
+
+<!-- 3 第一次使用 1-3 -->
+<section class="page">
+  <h2><span class="no">一</span>第一次使用（只做一次）</h2>
+  <p class="lead">全部約 5 分鐘。做完以後，每天只要點選單、按一下就好。</p>
+
+  <div class="step"><div class="num">1</div><div class="txt">
+    <b class="t">加 LINE 好友「如菓室內設計」</b>
+    <p>LINE → <span class="path">主頁</span> → 右上角 <span class="path">加入好友</span> → <span class="path">搜尋</span> → 選 <span class="path">ID</span> → 輸入：</p>
+    <p class="big"><span class="key" style="font-size:19px">@496qcmkk</span>　→ 加入</p>
+    <p style="color:var(--muted);font-size:14px">LINE 畫面依版本可能略有不同，找「加入好友」就對了。</p>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div class="txt">
+    <b class="t">打開聊天室，點下方選單</b>
+    <p>聊天室下方會出現 4 個大按鈕。要打卡就點「上班打卡」或「下班打卡」。</p>
+    <div class="shot" style="margin-top:6px"><img src="images/00_staff_menu.png" alt="員工選單 4 格"></div>
+    <div class="tip" style="margin-bottom:0"><b>還沒看到選單？</b>請點老闆傳給你的打卡網址<br><b>https://liff.line.me/2012150599-SlSFgsUI</b><br>畫面出現「沒有使用權限」是正常的，跟老闆說一聲，老闆把你加進名單後，選單大約 10 分鐘內會出現。</div>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div class="txt">
+    <b class="t">LINE 跳出授權畫面 → 按「許可」</b>
+    <p>第一次打開打卡頁，LINE 會詢問是否允許這個頁面使用你的 LINE 帳號資料（用來確認是你本人）。按 <span class="key">許可</span> 即可，之後不會再問。</p>
+  </div></div>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>3</span></div>
+</section>
+
+<!-- 4 第一次使用 4-5 -->
+<section class="page">
+  <h2><span class="no">一</span>第一次使用（續）</h2>
+  <div class="step"><div class="num">4</div><div class="txt">
+    <b class="t">閱讀同意書 → 按「我已閱讀並同意」</b>
+    <p>第一次打開會出現同意書，請閱讀後按「我已閱讀並同意」。</p>
+  </div>
+  <div class="shot w70"><img src="images/01_consent_gate.png" alt="同意書畫面，下方有「我已閱讀並同意」按鈕"></div></div>
+
+  <div class="step"><div class="num">5</div><div class="txt">
+    <b class="t">打開手機「定位」權限給 LINE</b>
+    <p>沒開定位就無法打卡。依你的手機照下面設定：</p>
+    <table style="margin:6px 0 8px">
+      <tr><th style="width:22%">手機</th><th>設定路徑</th></tr>
+      <tr><td><b>iPhone</b></td><td><span class="path">設定 → 隱私權與安全性 → 定位服務 → LINE</span><br>選「<b>使用 App 期間</b>」，並打開「<b>精確位置</b>」。</td></tr>
+      <tr><td><b>Android</b></td><td><span class="path">設定 → 應用程式 → LINE → 權限 → 位置</span><br>選「<b>僅在使用時允許</b>」（部分手機寫「僅在使用應用程式時允許」），並打開「<b>使用精確位置</b>」。</td></tr>
+    </table>
+    <p>第一次按打卡時，手機若跳出「是否允許使用位置」，請按 <span class="key">允許</span>。</p>
+    <div class="tip" style="margin-bottom:0">手機的「定位服務／位置」總開關也要是開著的。</div>
+  </div></div>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>4</span></div>
+</section>
+
+<!-- 5 上班 -->
+<section class="page">
+  <h2><span class="no">二</span>上班打卡</h2>
+  <p class="lead">到公司後再按（公司 200 公尺內）。</p>
+  <div class="step"><div class="num">1</div><div class="txt">
+    <b class="t">點選單「上班打卡」</b>
+    <p>打開後是「上班」分頁。上方會寫今天的上班規則。</p>
+    <p>這時「距公司」顯示 <b>—</b> 是正常的：<b>還沒按之前不會定位</b>。</p>
+  </div><div class="shot w66"><img src="images/02_punch_in_idle.png" alt="上班打卡畫面，尚未按下"></div></div>
+
+  <div class="step"><div class="num">2</div><div class="txt">
+    <b class="t">按大綠色按鈕「確認上班打卡」</b>
+    <p>只要按 <b>一次</b>。系統在這一刻讀位置並送出。</p>
+    <p>成功會看到：<br><b>「上班打卡成功 08:50｜距公司 23 公尺　今天 17:50 後可下班」</b></p>
+    <p>遲到時訊息會加註「（遲到 xx 分）」。</p>
+    <div class="tip">同一天上班卡只能打一次，再按會顯示「今天已經打過上班卡」。</div>
+  </div><div class="shot w66"><img src="images/03_punch_in_done.png" alt="上班打卡成功畫面"></div></div>
+  <p style="color:var(--muted);font-size:13px;margin:0">※ 截圖為測試畫面，姓名「員工甲」、時間與距離皆為示意。</p>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>5</span></div>
+</section>
+
+<!-- 6 下班 -->
+<section class="page">
+  <h2><span class="no">三</span>下班打卡</h2>
+  <p class="lead">離開公司前按（一樣要在公司 200 公尺內）。</p>
+  <div class="step"><div class="num">1</div><div class="txt">
+    <b class="t">點選單「下班打卡」→ 按「確認下班打卡」</b>
+    <p>上方會寫「今天 <b>xx:xx 後</b>下班不算早退」，這個時間＝你的上班卡時間＋9 小時。</p>
+    <p>成功會顯示「下班打卡成功 xx:xx」；太早按會加註「（早退 xx 分）」。</p>
+    <div class="tip">下班卡按了不只一次也沒關係，系統以<b>當天最晚</b>那一筆為準。</div>
+  </div><div class="shot w72"><img src="images/04_punch_out_idle.png" alt="下班打卡畫面"></div></div>
+
+  <h3 style="font-size:19px;margin:12px 0 6px">彈性下班怎麼算？</h3>
+  <table>
+    <tr><th>上班卡</th><th>幾點後下班不算早退</th><th>說明</th></tr>
+    <tr><td class="n">08:50</td><td class="n">17:50</td><td>08:50 ＋ 9 小時（含午休 60 分鐘）</td></tr>
+    <tr><td class="n">09:30</td><td class="n">18:30</td><td>09:30 才到，18:29 下班就算早退 1 分</td></tr>
+    <tr><td class="n">09:40</td><td class="n">18:40</td><td>09:40 仍不算遲到，下班時間跟著往後</td></tr>
+    <tr><td class="n">沒打上班卡</td><td class="n">18:00</td><td>當天沒有上班卡時，以 18:00 判定</td></tr>
+  </table>
+  <div class="warn">忘了打上班卡？請盡快送「補登申請」（第 9 頁），不然下班時間會被當成 18:00。</div>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>6</span></div>
+</section>
+
+<!-- 7 失敗 1 -->
+<section class="page">
+  <h2><span class="no">四</span>打卡失敗怎麼辦</h2>
+  <p class="lead">看紅色框裡的字，對照下面處理。打卡失敗＝沒有留下紀錄，請照下面處理。</p>
+
+  <div class="fail"><div class="shot w68"><img src="images/05_out_of_range.png" alt="超出範圍畫面"></div><div class="txt">
+    <span class="tag">狀況 1　超出範圍</span>
+    <p class="big" style="margin:4px 0"><b>「不在公司打卡範圍內，無法直接打卡。若在外面工作，請改送補登申請。」</b></p>
+    <p>畫面會顯示你離公司多遠（例：距公司 4.7 公里）。</p>
+    <ul class="s">
+      <li>人在公司卻打不進去：走到靠近大門或戶外，再按一次。</li>
+      <li>人在案場／外面工作：按下方 <span class="key">改送補登申請</span>，直接跳到補登頁（第 9 頁）。</li>
+    </ul>
+  </div></div>
+
+  <div class="fail"><div class="shot w68"><img src="images/06a_poor_accuracy.png" alt="定位不準畫面"></div><div class="txt">
+    <span class="tag">狀況 2　定位不準</span>
+    <p class="big" style="margin:4px 0"><b>「手機定位不夠準確，請移到收訊較好處、開啟『精確位置』後重試。」</b></p>
+    <ul class="s">
+      <li>走到<b>窗邊或空曠處</b>。</li>
+      <li>打開手機 <b>Wi-Fi</b>（不用連上，開著就能幫定位）。</li>
+      <li>確認有開「精確位置」（第 4 頁）。</li>
+      <li>再按一次「確認打卡」。</li>
+    </ul>
+  </div></div>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>7</span></div>
+</section>
+
+<!-- 8 失敗 2 -->
+<section class="page">
+  <h2><span class="no">四</span>打卡失敗怎麼辦（續）</h2>
+  <div class="fail" style="margin-top:8px"><div class="shot w68"><img src="images/06b_no_geo_permission.png" alt="沒有位置權限畫面"></div><div class="txt">
+    <span class="tag">狀況 3　沒有位置權限</span>
+    <p class="big" style="margin:4px 0"><b>「沒有位置權限。請到手機『設定 → 隱私權與安全性 → 定位服務 → LINE』…」</b></p>
+    <p>手機沒有允許 LINE 使用定位。照第 4 頁的設定打開：</p>
+    <ul class="s">
+      <li><b>iPhone</b>：照畫面上的路徑設定。</li>
+      <li><b>Android</b>：畫面寫的是 iPhone 路徑，請改走<br><span class="path">設定 → 應用程式 → LINE → 權限 → 位置</span>。</li>
+    </ul>
+    <p>設定好回到打卡頁，再按一次。</p>
+  </div></div>
+
+  <div class="fail"><div class="shot w68"><img src="images/06c_not_authorized.png" alt="沒有使用權限畫面"></div><div class="txt">
+    <span class="tag">狀況 4　沒有使用權限</span>
+    <p class="big" style="margin:4px 0"><b>「您沒有使用權限。若您是公司員工，請通知老闆將您加入名單。」</b></p>
+    <p>你的 LINE 還沒被加進員工名單。<b>請跟老闆說</b>，老闆加好後再試。</p>
+  </div></div>
+
+  <h3 style="font-size:18px;margin:6px 0 6px">其他訊息</h3>
+  <table>
+    <tr><th style="width:46%">畫面寫</th><th>怎麼做</th></tr>
+    <tr><td>目前讀不到位置／讀不到有效的位置／定位逾時／定位失敗</td><td>確認已允許定位（第 4 頁），移到收訊好的地方，再按一次。</td></tr>
+    <tr><td>網路異常，請確認連線後重試。</td><td>檢查行動網路或 Wi-Fi，再按一次。</td></tr>
+    <tr><td>登入已過期，請回 LINE 重新開啟打卡頁。</td><td>關掉頁面，回聊天室重新點選單。</td></tr>
+    <tr><td>系統忙碌，請稍後再試…</td><td>等一下再試；一直出現就告訴老闆。</td></tr>
+  </table>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>8</span></div>
+</section>
+
+<!-- 9 補登 -->
+<section class="page">
+  <h2><span class="no">五</span>補登申請</h2>
+  <p class="lead">忘了打卡、直接去案場、超出範圍打不進去時使用。送出後由老闆審核。</p>
+  <div class="duo">
+    <figure><div class="shot w70"><img src="images/07_makeup_form.png" alt="補登申請填寫畫面"></div><figcaption>填寫</figcaption></figure>
+    <figure><div class="shot w70"><img src="images/08_makeup_sent.png" alt="補登申請送出成功畫面"></div><figcaption>送出成功</figcaption></figure>
+  </div>
+  <div class="step" style="padding:10px 16px"><div class="num">1</div><div class="txt"><b class="t">點選單「補登申請」</b>（或打卡失敗時按「改送補登申請」）</div></div>
+  <div class="step" style="padding:10px 16px"><div class="num">2</div><div class="txt"><b class="t">填 4 格</b>
+    <b>類型</b>（上班／下班）・<b>日期</b>・<b>時間</b>・<b>原因</b>（例：直接到南屯案場會勘）</div></div>
+  <div class="step" style="padding:10px 16px"><div class="num">3</div><div class="txt"><b class="t">按「送出申請」</b>
+    看到「補登申請已送出，等老闆審核。」就完成了。老闆核准或退回後，<b>LINE 會通知你</b>。</div></div>
+  <div class="warn" style="margin-top:4px"><b>限制：</b>最多補登 <b>31 天內</b>的日期、不能補未來的日期；原因要寫（200 字內）；同一天同一類型已有一筆「待審」時，不能再送第二筆。</div>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>9</span></div>
+</section>
+
+<!-- 10 紀錄 -->
+<section class="page">
+  <h2><span class="no">六</span>我的紀錄</h2>
+  <p class="lead">點選單「我的紀錄」，看自己這個月的出勤。<b>只看得到自己的</b>。</p>
+  <div class="step"><div class="txt">
+    <b class="t">看得到什麼</b>
+    <ul class="s">
+      <li><b>月份</b>：點一下可以換月份看。</li>
+      <li><b>小計</b>：應出勤、實到、遲到、缺卡、補登（次數）、工時。</li>
+      <li><b>每天一列</b>：日期、上班時間、下班時間、備註（遲到幾分、早退幾分、缺卡、補登）。</li>
+      <li>沒打卡的欄位顯示 <b>—</b>。</li>
+    </ul>
+    <div class="tip">看到「缺卡」？表示那天少了上班或下班卡，請送「補登申請」。</div>
+    <p style="color:var(--muted);font-size:13px">※ 右圖為測試資料示意，非真實出勤。</p>
+  </div><div class="shot w80"><img src="images/09_records.png" alt="我的紀錄畫面"></div></div>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>10</span></div>
+</section>
+
+<!-- 11 QA -->
+<section class="page">
+  <h2>常見問題 Q&amp;A</h2>
+  <div class="qa"><div class="q">手機時間不準，會影響打卡時間嗎？</div><div class="a">不會。時間以系統伺服器為準，不看手機時間。</div></div>
+  <div class="qa"><div class="q">打開打卡頁就會一直追蹤我的位置嗎？</div><div class="a">不會。只有按下「確認打卡」那一刻讀一次位置，打開頁面時不會定位。</div></div>
+  <div class="qa"><div class="q">09:40 打上班卡算遲到嗎？</div><div class="a">不算。09:40（含）以前都不算遲到；09:41 起算遲到，遲到分鐘從 09:00 起算（09:41＝遲到 41 分）。</div></div>
+  <div class="qa"><div class="q">今天幾點可以下班？</div><div class="a">上班卡時間＋9 小時（含午休 60 分鐘）。打完上班卡，畫面會直接告訴你「今天 xx:xx 後可下班」。</div></div>
+  <div class="qa"><div class="q">早上直接去案場，沒進公司怎麼辦？</div><div class="a">在案場打卡會顯示超出範圍。請送「補登申請」，原因寫案場名稱與事由。</div></div>
+  <div class="qa"><div class="q">上班卡不小心按了兩次？</div><div class="a">沒關係，第二次會被擋下並顯示「今天已經打過上班卡」，記錄只有一筆。</div></div>
+  <div class="qa"><div class="q">在公司裡卻顯示超出範圍或定位不準？</div><div class="a">走到窗邊、門口或戶外，打開 Wi-Fi，再按一次。還是不行就送補登申請並告訴老闆。</div></div>
+  <div class="qa"><div class="q">補登送出後多久知道結果？</div><div class="a">老闆審核後，LINE 會傳訊息通知你「已核准」或「已退回」。</div></div>
+  <div class="qa"><div class="q">換手機或重新安裝 LINE 怎麼辦？</div><div class="a">用同一個 LINE 帳號登入即可，記得在新手機重新開定位權限（第 4 頁）。</div></div>
+  <div class="contact">
+    <h3>聯絡老闆</h3>
+    <p>打卡失敗又無法補登、選單不見、看到不懂的訊息、對同意書或打卡方式有疑問：<b>直接 LINE 或當面告訴老闆</b>。<br>回報時請一起附上<b>手機畫面截圖</b>，處理最快。</p>
+  </div>
+  <div class="foot"><span>如菓 LINE 打卡使用手冊（員工版）v1</span><span>11</span></div>
+</section>
+
+</body>
+</html>
